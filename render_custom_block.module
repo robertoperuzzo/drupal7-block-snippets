@@ -1,0 +1,10 @@
+<?php
+  
+  /*
+  Args
+   - custom_module_name.
+   - module_hook (leave block_view).
+   - array index used in your custom hook_block_info().
+  */
+  $block = module_invoke('render_custom_block', 'block_view', 'my_block_id');
+  print render($block['content']);
