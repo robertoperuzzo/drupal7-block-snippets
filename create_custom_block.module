@@ -1,0 +1,35 @@
+/**
+ * Implements hook_block_info().
+ */
+function create_custom_block_block_info() {
+
+  $blocks['create_custom_block'] = array(
+    'info' => t('My custom block'),
+    'cache' => DRUPAL_NO_CACHE
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function create_custom_block_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'create_custom_block':
+      $block['content'] = array(
+        '#markup' => _create_custom_block_view(),
+        );
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Helper function for hook_block_view().
+ */
+function _create_custom_block_view() {
+  $content = t('This is content for my custom block');
+
+  return $content;
+}
